@@ -137,9 +137,32 @@ function LifeApp({ accent = '#39ff7a', theme = 'phosphor' }) {
   };
   const T = themes[theme] || themes.phosphor;
 
-  const dims = useMemo(() => ({ rows: 60, cols: 100, cell: 9 }), []);
+  // Logical grid size is fixed; the cell pixel size adapts to the available
+  // space in the center pane so the layout works at any viewport width.
+  const ROWS = 60, COLS = 100;
+  const canvasFrameRef = useRef(null);
+  const [containerSize, setContainerSize] = useState({ w: 900, h: 540 });
+  useEffect(() => {
+    const el = canvasFrameRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(entries => {
+      for (const e of entries) {
+        const { width, height } = e.contentRect;
+        setContainerSize({ w: width, h: height });
+      }
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const dims = useMemo(() => {
+    // Center pane has 16px padding on each side, plus 6px frame border + 6px padding inside.
+    const availW = Math.max(80, containerSize.w - 32 - 24);
+    const availH = Math.max(80, containerSize.h - 32 - 24);
+    const cell = Math.max(2, Math.min(14, Math.floor(Math.min(availW / COLS, availH / ROWS))));
+    return { rows: ROWS, cols: COLS, cell };
+  }, [containerSize.w, containerSize.h]);
 
-  const boardRef = useRef(new window.LifeBoard(dims.rows, dims.cols, { rule: 'B3/S23', boundary: 'wrap' }));
+  const boardRef = useRef(new window.LifeBoard(ROWS, COLS, { rule: 'B3/S23', boundary: 'wrap' }));
   const [, force] = useState(0);
   const rerender = () => force(n => n + 1);
 
@@ -411,19 +434,22 @@ function LifeApp({ accent = '#39ff7a', theme = 'phosphor' }) {
       <Header />
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '230px 1fr 280px',
+        // Sidebars get their preferred width when there's room and shrink down
+        // to a sensible minimum on narrow viewports — keeps the 3-pane layout
+        // intact at any width without horizontal scrolling.
+        gridTemplateColumns: 'minmax(180px, 230px) minmax(0, 1fr) minmax(220px, 280px)',
         gridTemplateRows: '1fr',
         height: 'calc(100% - 41px)',
       }}>
         {/* LEFT — pattern library */}
-        <div style={{ borderRight: `1px solid ${T.border}` }}>
+        <div style={{ borderRight: `1px solid ${T.border}`, minWidth: 0 }}>
           <div style={{ padding: '10px 14px', color: T.muted, fontSize: 10, letterSpacing: '0.18em', borderBottom: `1px solid ${T.border}` }}>PATTERN LIBRARY</div>
           <PatternList />
         </div>
 
         {/* CENTER — canvas + controls */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, position: 'relative' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          <div ref={canvasFrameRef} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, position: 'relative', minHeight: 0 }}>
             <div style={{ border: `1px solid ${T.border}`, padding: 6, background: T.dim, position: 'relative' }}>
               <LifeCanvas board={board} cell={dims.cell} accent={accent} dim={T.dim} glow={glow}
                 onPaint={onPaint} painting={painting} setPainting={setPainting} />

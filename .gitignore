@@ -1,0 +1,28 @@
+# Virtual environments
+.venv/
+.venv-*/
+venv/
+
+# Python build / cache
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated artifacts at project root (script outputs)
+/*.gif
+/*.mp4
+/*.mov
+/pop.png
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

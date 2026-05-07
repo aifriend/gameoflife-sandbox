@@ -1,0 +1,4 @@
+#N Blinker
+#C The simplest period-2 oscillator. 3 cells, switches between horizontal and vertical bar.
+x = 3, y = 1, rule = B3/S23
+3o!

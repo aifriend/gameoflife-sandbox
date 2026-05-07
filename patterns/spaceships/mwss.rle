@@ -1,0 +1,11 @@
+#N Middleweight Spaceship (MWSS)
+#C Period 4, displacement (0,2) — speed c/2. 11 live cells.
+#C
+#C Phase 0 (canonical depiction):
+#C   ..O...
+#C   O...O.
+#C   .....O
+#C   O....O
+#C   .OOOOO
+x = 6, y = 5, rule = B3/S23
+2bo3b$o3bob$5bo$o4bo$b5o!

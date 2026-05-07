@@ -1,0 +1,59 @@
+[project]
+name = "gameoflife-sandbox"
+version = "0.1.0"
+description = "Computational sandbox for Conway's Game of Life — engine, patterns, analysis, and Turing-completeness experiments"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Jose Lopez", email = "j.b.lopez.acc@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Games/Entertainment :: Simulation",
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "scipy>=1.9.0",
+    "matplotlib>=3.5.0",
+    "pygame>=2.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "ipython>=8.0",
+]
+fast = [
+    "lifelib>=2.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/aifriend/gameoflife-sandbox"
+Repository = "https://github.com/aifriend/gameoflife-sandbox"
+Issues = "https://github.com/aifriend/gameoflife-sandbox/issues"
+Changelog = "https://github.com/aifriend/gameoflife-sandbox/blob/main/CHANGELOG.md"
+LifeWiki = "https://conwaylife.com/wiki/"
+Golly = "https://golly.sourceforge.io/"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["gameoflife*"]
+exclude = ["tests*", "scripts*", "patterns*", "docs*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v"

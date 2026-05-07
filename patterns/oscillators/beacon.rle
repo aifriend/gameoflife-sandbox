@@ -1,0 +1,4 @@
+#N Beacon
+#C Period-2 oscillator. Two diagonal blocks that flash on/off.
+x = 4, y = 4, rule = B3/S23
+2o2b$2o2b$2b2o$2b2o!

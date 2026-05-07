@@ -1,0 +1,6 @@
+#N R-pentomino
+#C One of the most famous methuselahs. Stabilizes after 1103 generations.
+#C Final population: 116 cells (8 blocks, 6 gliders, 4 blinkers, ...).
+#C Discovered by John Conway in 1970.
+x = 3, y = 3, rule = B3/S23
+b2o$2ob$bo!

@@ -1,0 +1,7 @@
+#N Eater 1 (Fishhook)
+#C 7-cell still life that absorbs SE-bound gliders. The eater + glider
+#C interact for 4 generations, after which the eater reforms unchanged.
+#C The most useful "destructor" for cleaning up glider streams.
+#C Discovered by Bill Gosper.
+x = 4, y = 4, rule = B3/S23
+2o2b$obob$2bob$2b2o!

@@ -1,0 +1,5 @@
+#N Glider
+#C The smallest spaceship. Period 4, displacement (1,1) per period — speed c/4 diagonal.
+#C Discovered by Richard K. Guy in 1969.
+x = 3, y = 3, rule = B3/S23
+bob$2bo$3o!

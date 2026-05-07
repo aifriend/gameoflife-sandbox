@@ -1,0 +1,6 @@
+#N Glider Collision Demo
+#C Two head-on gliders that annihilate at center after ~25 generations.
+#C The simplest demonstration of glider-stream interaction — the basis
+#C of NOT-gate construction.
+x = 30, y = 5, rule = B3/S23
+3bo22bob$bobo20bobob$2bo23bo2b$$!

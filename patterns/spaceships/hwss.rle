@@ -1,0 +1,11 @@
+#N Heavyweight Spaceship (HWSS)
+#C Period 4, displacement (0,2) — speed c/2. 13 live cells.
+#C
+#C Phase 0 (canonical depiction):
+#C   ..OO...
+#C   O....O.
+#C   ......O
+#C   O.....O
+#C   .OOOOOO
+x = 7, y = 5, rule = B3/S23
+2b2o3b$o4bob$6bo$o5bo$b6o!

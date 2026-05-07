@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Life — Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Conway's Game of Life — interactive Studio frontend for the gameoflife-sandbox project." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #020604; }
+  body { font-family: "JetBrains Mono", ui-monospace, monospace; color: #cfcfcf; }
+  *, *::before, *::after { box-sizing: border-box; }
+  button { font-family: inherit; }
+  button:hover { filter: brightness(1.15); }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #050505; }
+  ::-webkit-scrollbar-thumb { background: #1a3a25; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a5a3a; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="life-engine.js"></script>
+<script type="text/babel" src="life-app.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+function App() {
+  return (
+    <div style={{ position: 'fixed', inset: 0 }}>
+      <window.LifeApp accent="#39ff7a" theme="phosphor" />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

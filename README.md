@@ -50,7 +50,23 @@ scripts/
     animate.py          — render to GIF/MP4
     glider_demo.py      — collision and gun+eater demos
     list_patterns.py    — index of all bundled patterns
+
+web/
+    Studio — retro-CRT, phosphor-green interactive frontend (React +
+    Canvas, no build step). See web/README.md.
 ```
+
+## Web frontend
+
+```bash
+python -m http.server 8000
+# open http://localhost:8000/web/
+```
+
+Three-pane IDE layout: pattern library (left), live canvas with
+glow + scanlines (center), B/S rule builder + telemetry + population
+trace (right). Click to paint, drag to draw, run/step/clear, swap
+patterns, toggle each rule digit. Full controls in [web/README.md](web/README.md).
 
 ## License
 

@@ -32,7 +32,7 @@ from gameoflife.analysis import (
     population,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = [
     "LifeBoard",
     "step",

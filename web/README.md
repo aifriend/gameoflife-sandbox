@@ -3,7 +3,7 @@
 A retro-CRT, phosphor-green interactive Game of Life viewer. Companion UI
 to the Python sandbox in the parent directory.
 
-![Studio variant — pattern library / live canvas / rule builder](../docs/studio-screenshot.png)
+![Studio — pattern library / live canvas / rule builder](../docs/studio.png)
 
 ## Run it
 

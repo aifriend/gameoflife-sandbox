@@ -4,6 +4,11 @@ A complete, ready-to-run environment for experimenting with Conway's
 Game of Life. Engine, pattern library, analysis tools, and a path from
 glider physics to **proven Turing-completeness**.
 
+> **Looking for the interactive UI?** This guide is for the Python
+> CLI / scripting side. For the in-browser Studio (live grid, click
+> to paint, run/step controls, B/S rule builder, population trace),
+> run `./scripts/launch_web.sh` — see [web/README.md](web/README.md).
+
 > **Why "computational" sandbox?** Life isn't just a pretty cellular
 > automaton. It's been *proven* universal: Paul Rendell built an
 > explicit universal Turing machine in Life cells (2010); the

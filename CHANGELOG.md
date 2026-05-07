@@ -4,6 +4,36 @@ All notable changes are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] — 2026-05-07
+
+Adds an interactive web frontend on top of the Python sandbox. No
+breaking changes to the Python API.
+
+### Added
+- **`web/`** — interactive Studio UI: phosphor-green CRT aesthetic,
+  three-pane IDE layout (pattern library left, live canvas center,
+  rule builder + telemetry + population trace right). Pure
+  client-side: React UMD + Babel-in-browser, no build step.
+  - Pure-JS `LifeBoard` engine mirroring the Python semantics
+    (B/S rules, wrap/fill boundary, click-to-paint).
+  - 20 canonical patterns hardcoded in JS (parity with the
+    `patterns/` RLE collection minus the very large Simkin gun).
+  - 8 rule presets (Conway, HighLife, Seeds, Gnarl, Life w/o Death,
+    34 Life, Day & Night, Diamoeba).
+  - FNV-1a hash period detection.
+  - Adaptive cell size: layout fits any viewport from ~620px wide
+    up, with cells scaling from 2px (narrow) to 14px (wide).
+- **`scripts/launch_web.sh`** — one-command port-check / serve /
+  open / tail. Auto-kills its own previous instance, refuses to
+  reuse a port held by anything else, opens the URL via
+  `open` / `xdg-open` / `wslview`, then tails the access log
+  (Ctrl+C cleanly stops the server).
+- **`docs/studio.png`** — screenshot of the Studio UI.
+
+### Fixed
+- The prototype's `eater1` wasn't actually a still life — corrected
+  to the canonical fishhook shape that matches `patterns/exotic/eater1.rle`.
+
 ## [0.1.0] — 2026-05-07
 
 Initial release.

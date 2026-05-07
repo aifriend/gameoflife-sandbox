@@ -1,7 +1,7 @@
 [project]
 name = "gameoflife-sandbox"
-version = "0.1.0"
-description = "Computational sandbox for Conway's Game of Life — engine, patterns, analysis, and Turing-completeness experiments"
+version = "0.2.0"
+description = "Computational sandbox for Conway's Game of Life — engine, patterns, analysis, web Studio UI"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"

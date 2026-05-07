@@ -59,9 +59,13 @@ web/
 ## Web frontend
 
 ```bash
-python -m http.server 8000
-# open http://localhost:8000/web/
+./scripts/launch_web.sh
 ```
+
+Checks port 5173, kills any stale launcher of its own, starts
+`http.server`, opens your browser, and tails the access log.
+Ctrl+C stops the server cleanly. Override the port with
+`./scripts/launch_web.sh 8080`.
 
 Three-pane IDE layout: pattern library (left), live canvas with
 glow + scanlines (center), B/S rule builder + telemetry + population

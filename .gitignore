@@ -20,6 +20,10 @@ htmlcov/
 /*.mov
 /pop.png
 
+# launch_web.sh runtime files
+/.web-server.log
+/.web-server.pid
+
 # Editor / OS
 .DS_Store
 .idea/

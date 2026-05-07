@@ -10,8 +10,21 @@ to the Python sandbox in the parent directory.
 No build step. Any static HTTP server works because the page uses
 React UMD + Babel-in-browser.
 
+**One-liner** (recommended): from the project root,
+
 ```bash
-# from the GameOfLife/ project root:
+./scripts/launch_web.sh
+```
+
+That checks port 5173, kills any stale launcher of its own, starts
+`python -m http.server`, opens your default browser, and tails the
+access log so you can watch requests as you click around. Ctrl+C
+stops the server cleanly. Pass a port to override the default:
+`./scripts/launch_web.sh 8080`.
+
+**Manual:**
+
+```bash
 python -m http.server 8000
 # then open: http://localhost:8000/web/
 ```

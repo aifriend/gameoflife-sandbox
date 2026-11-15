@@ -93,3 +93,23 @@ def test_hash_grid_translation_invariant():
     g1[1:4, 1:4] = glider
     g2[5:8, 6:9] = glider
     assert hash_grid(g1) == hash_grid(g2)
+
+
+def test_hash_grid_is_stable_across_processes():
+    """blake2b is not salted per process, unlike the built-in hash()."""
+    import subprocess
+    import sys
+    code = (
+        "import numpy as np; from gameoflife import hash_grid; "
+        "g = np.zeros((6, 6), dtype=np.uint8); g[1, 2] = g[2, 3] = g[3, 1] = 1; "
+        "print(hash_grid(g))"
+    )
+    outs = {subprocess.run([sys.executable, "-c", code], capture_output=True,
+                           text=True, check=True).stdout.strip() for _ in range(2)}
+    assert len(outs) == 1
+
+
+def test_hash_grid_distinguishes_shapes_with_same_cells():
+    row = np.ones((1, 4), dtype=np.uint8)
+    square = np.ones((2, 2), dtype=np.uint8)
+    assert hash_grid(row) != hash_grid(square)

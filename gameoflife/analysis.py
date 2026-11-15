@@ -8,6 +8,7 @@ Useful for classifying patterns:
 """
 from __future__ import annotations
 
+import hashlib
 from dataclasses import dataclass
 from typing import Optional, Tuple
 
@@ -135,6 +136,15 @@ def density(grid: np.ndarray) -> float:
 
 
 def hash_grid(grid: np.ndarray) -> int:
-    """Stable hash of grid contents — useful for cycle detection over big runs."""
+    """Stable hash of grid contents — useful for cycle detection over big runs.
+
+    Uses ``blake2b`` over the cropped cells plus their shape, so the value is
+    the same across processes (Python's built-in ``hash`` of bytes is salted
+    per process) and ``bytes(shape)`` no longer overflows for large grids.
+    """
     cropped, _ = _crop(grid)
-    return hash(cropped.tobytes() + bytes(cropped.shape))
+    cells = np.ascontiguousarray(cropped, dtype=np.uint8)
+    h = hashlib.blake2b(digest_size=8)
+    h.update(f"{cells.shape[0]}x{cells.shape[1]}:".encode("ascii"))
+    h.update(cells.tobytes())
+    return int.from_bytes(h.digest(), "big")

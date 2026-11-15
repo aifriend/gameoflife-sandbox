@@ -56,8 +56,8 @@ GLIDER_NW = np.flipud(np.fliplr(GLIDER_SE)).copy()
 GOSPER_GUN_SE = np.array([
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0],
-    [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+    [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
     [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
@@ -139,8 +139,9 @@ def build_gun_eater_demo(rows: int = 60, cols: int = 80) -> LifeBoard:
     pair. Demonstrates how to clean up a stream."""
     b = LifeBoard.empty(rows, cols, boundary="fill")
     place_gun(b, 5, 5, "SE")
-    # Eater positioned where the glider stream arrives. The Gosper gun
-    # emits the first glider with its leading cell around row 13, col 41
-    # (relative to the gun's top-left + a bit of offset for phase).
-    place_eater(b, 35, 50, "NW")
+    # The gun's SE-bound gliders travel along the diagonal row - col = -14.
+    # An SE-oriented eater whose top-left cell is at (30, 44) sits on that
+    # diagonal and swallows every glider; from about generation 200 on the
+    # whole board repeats exactly every 30 generations.
+    place_eater(b, 30, 44, "SE")
     return b

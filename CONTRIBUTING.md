@@ -16,7 +16,8 @@ pytest -q
 
 `setup.sh` requires [`uv`](https://docs.astral.sh/uv/). If you'd rather use
 a vanilla `python -m venv` setup, that works too — see `pyproject.toml` for
-the dependency list.
+the dependency list. The pygame viewer and matplotlib animations are an
+optional extra: `pip install -e ".[viz]"`.
 
 ## Adding a new pattern
 

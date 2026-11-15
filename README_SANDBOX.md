@@ -27,7 +27,7 @@ glider physics to **proven Turing-completeness**.
 
 What it does:
 - Creates `.venv/` via `uv` (Python 3.11 by default — override with `PYTHON_VERSION=3.10 ./setup.sh`)
-- Installs `numpy`, `scipy`, `matplotlib`, `pygame`, `pytest`
+- Installs `numpy`, `scipy`, `pytest`, plus the optional `viz` extra (`matplotlib`, `pygame`)
 - Installs the `gameoflife` package in editable mode
 - Runs a glider smoke test
 - Runs the full `pytest` suite (~30 tests)

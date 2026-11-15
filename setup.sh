@@ -17,7 +17,7 @@ echo "[1/4] Creating venv at .venv (Python ${PYTHON_VERSION})..."
 uv venv --python "${PYTHON_VERSION}" .venv
 
 echo "[2/4] Installing dependencies..."
-VIRTUAL_ENV=.venv uv pip install -e ".[dev]"
+VIRTUAL_ENV=.venv uv pip install -e ".[dev,viz]"
 
 echo "[3/4] Running smoke test..."
 PYTHONPATH=. .venv/bin/python -c "

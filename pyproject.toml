@@ -24,11 +24,13 @@ classifiers = [
 dependencies = [
     "numpy>=1.21.0",
     "scipy>=1.9.0",
-    "matplotlib>=3.5.0",
-    "pygame>=2.5.0",
 ]
 
 [project.optional-dependencies]
+viz = [
+    "matplotlib>=3.5.0",
+    "pygame>=2.5.0",
+]
 dev = [
     "pytest>=6.0",
     "ipython>=8.0",
@@ -46,7 +48,7 @@ LifeWiki = "https://conwaylife.com/wiki/"
 Golly = "https://golly.sourceforge.io/"
 
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
